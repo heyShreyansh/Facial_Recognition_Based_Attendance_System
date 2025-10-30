@@ -1,0 +1,25 @@
+# Node and frontend
+node_modules/
+dist/
+build/
+.vite/
+npm-debug.log*
+yarn-error.log
+
+# Python venv and caches
+venv/
+.env
+.env.local
+.env.*.local
+__pycache__/
+*.py[cod]
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Misc
+coverage/
+*.log

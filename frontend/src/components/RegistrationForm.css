@@ -1,0 +1,246 @@
+
+:root {
+    /* YOUR THEME COLORS */
+    --form-primary-lilac: #bfcaff;    /* Lilac/Purple Accent */
+    --form-primary-dark: rgba(31, 41, 55, 0.5); /* SOFTER Deep Navy for Borders/Shadows */
+    --form-text-main: #181a22;        /* Main Form Text */
+    --form-background: #fcfbf7;       /* Off-white background */
+    --form-text-muted: #6c7a89;
+
+    /* UIVERSE MAPPING */
+    --input-focus: var(--form-primary-lilac); 
+    --main-color: var(--form-primary-dark);   /* Now a transparent dark color */
+    --font-color: var(--form-text-main);
+    --font-color-sub: var(--form-text-muted);
+    --bg-color: var(--form-background);
+    
+    /* Submit Button (Lilac) */
+    --submit-color: var(--form-primary-lilac);
+    --submit-hover: #a1a9e3;
+    
+    /* Avatar specific colors (Human Avatar) */
+    --avatar-skin-h: 30;
+    --avatar-skin-s: 100%;
+    --avatar-skin-l: 87%;
+    --avatar-hair-color: #643c8a; /* Dark Purple/Indigo Hair */
+    --avatar-body-color: var(--submit-color); /* Lilac Shirt */
+    --avatar-eyes-mouth: #333; /* Slightly softer dark for eyes/mouth */
+
+    /* General Uiverse Dimensions (Adjusted) */
+    --p: 28px; 
+    --submit-h: 45px; 
+    --blind-w: 64px; 
+    --space-y: 0.75rem;
+    --danger: #e74c3c;
+    --border-radius: 5px;
+    --eye-size: 8px; 
+}
+
+/* 2. Base Styling */
+body {
+    background: var(--bg-color);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* prevent perfect centering to avoid clipping */
+    padding: 60px 20px 20px 20px; /* room at top for logo */
+}
+
+/* 3. Card Container (Increased Width and Stacked Layout) */
+.card {
+    width: 550px; 
+    max-width: 95%;
+    border-radius: 16px;
+    background: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: calc(var(--p) + 20px)  var(--p) var(--p) var(--p);
+    box-shadow: 6px 6px var(--main-color); /* Softer shadow */
+    border: 2px solid var(--main-color); /* Softer border */
+    transition: all 0.2s ease-out;
+}
+
+/* 4. Avatar Container (.avatar) */
+.avatar {
+    --sz-avatar: 160px;
+    width: var(--sz-avatar);
+    height: var(--sz-avatar);
+    border: 1px solid rgba(0,0,0,0.15); /* Softer avatar border */
+    border-radius: 9999px;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(260, 30%, 95%);
+    overflow: hidden;
+}
+
+/* --- HUMAN AVATAR STYLES (Blended from previous Uiverse figure) --- */
+.human-avatar {
+    position: relative;
+    width: 60%;
+    height: 0;
+    padding-top: 60%;
+    border-radius: 50%;
+    background: transparent;
+}
+.human-avatar div {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.human-avatar .skin { background: hsl(var(--avatar-skin-h), var(--avatar-skin-s), var(--avatar-skin-l)); }
+.human-avatar .head {
+    top: 40%; left: 50%; width: 60%; height: 60%; border-radius: 100%;
+    box-shadow: 0 -0.175rem 0 0.125rem var(--avatar-hair-color);
+}
+.human-avatar .neck {
+    width: 10%; height: 40%; top: 62%; left: 50%;
+    background: hsl(var(--avatar-skin-h), var(--avatar-skin-s), calc(var(--avatar-skin-l) * 0.94));
+    border-radius: 0 0 2rem 2rem;
+}
+.human-avatar .person-body {
+    width: 60%; height: 100%; border-radius: 50%; left: 50%; top: 126%;
+    background: var(--avatar-body-color); /* Lilac Shirt */
+}
+.human-avatar .hair {
+    width: 66.66%; height: 66.66%; border-radius: 100%; overflow: hidden; top: 40%; left: 50%;
+}
+.human-avatar .hair::before {
+    content: ""; display: block; position: absolute; width: 100%; height: 100%;
+    background: var(--avatar-hair-color); border-radius: 50%; top: -60%; left: -50%;
+    box-shadow: 4rem 0 var(--avatar-hair-color);
+}
+.human-avatar .ears::before, .human-avatar .ears::after {
+    content: ""; background: hsl(var(--avatar-skin-h), var(--avatar-skin-s), var(--avatar-skin-l));
+    border-radius: 50%; width: 1rem; height: 1rem; display: inline-block; margin: 0 2.1rem;
+}
+
+/* EYES (Blinking) */
+.human-avatar .head .eyes { top: 50%; left: 50%; white-space: nowrap; }
+.human-avatar .head .eyes::before,
+.human-avatar .head .eyes::after {
+    content: ""; background: var(--avatar-eyes-mouth); border-radius: 50%;
+    width: var(--eye-size); height: var(--eye-size); display: inline-block;
+    margin: 0 0.35rem; animation: blink 5s infinite; transition: all 0.15s;
+    position: relative; top: 0;
+}
+@keyframes blink {
+    0%, 90%, 100% { height: var(--eye-size); top: 0; }
+    95% { height: 0.5px; top: calc(var(--eye-size) / 2); }
+}
+
+/* MOUTH (Soft, Gentle Smile) */
+.human-avatar .head .mouth {
+    top: 65%; /* Positioned lower */
+    left: 50%;
+    width: 25%; /* Slightly narrower */
+    height: 10%; /* Very thin to form a gentle curve */
+    border: 0.125rem solid transparent;
+    border-top: none; /* No top border */
+    border-left: 0.125rem solid var(--avatar-eyes-mouth);
+    border-right: 0.125rem solid var(--avatar-eyes-mouth);
+    border-bottom: 0.125rem solid var(--avatar-eyes-mouth);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%; /* Gentle U-shape for smile */
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+/* End of Human Avatar Styles */
+
+
+/* 5. Blind Checkbox (Kept for avatar focus interaction if desired, but button removed) */
+.blind-check { opacity: 0; width: 0; height: 0; }
+
+/* The actual "Show/Hide" button for password functionality (now visually absent) */
+.blind_input { /* Styles for the password toggle, no longer visible near webcam */
+    user-select: none; cursor: pointer; z-index: 4; position: absolute; border: none;
+    right: calc(var(--p) + 4px); /* Adjusted position */
+    /* This positioning is now relative to the end of the last form group */
+    bottom: calc(var(--p) + var(--submit-h) + (var(--space-y) * 2) + 3px); 
+    padding: 4px 0; width: var(--blind-w); border-radius: 4px; background-color: #fff;
+    color: var(--main-border-color); display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    visibility: hidden; /* HIDDEN: This button is functionally gone from the layout */
+}
+.blind_input:before { content: ""; position: absolute; left: -4px; top: 0; height: 100%; width: 1px; background: #8f8f8f; visibility: hidden; }
+.blind_input:hover { color: #262626; background-color: #f2f2f2; }
+.blind-check ~ label.blind_input span.show,
+.blind-check:checked ~ label.blind_input span.hide { display: none; }
+.blind-check ~ label.blind_input span.hide,
+.blind-check:checked ~ label.blind_input span.show { display: block; }
+
+
+/* 6. Form Content (.form) */
+.form { order: 1; position: relative; display: flex; align-items: center; flex-direction: column; width: 100%; gap: 15px; }
+
+.form .title {
+    width: 100%; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 1rem;
+    color: var(--form-text-main); /* Keep title text solid */ border-bottom: 2px solid rgba(0, 0, 0, 0.15); /* Softer title border */
+}
+
+/* SECTION HEADINGS */
+.title.section-heading {
+    margin-top: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1); /* Softer section heading border */
+    padding-bottom: 0.5rem; text-align: left; font-size: 1.2rem; font-weight: 800;
+}
+
+/* STACKED LAYOUT FIXES */
+.form-group { flex: 0 0 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 0; width: 100%; }
+
+/* Labels */
+.form .label_input {
+    font-size: 1rem; margin-top: 0; color: var(--form-text-main); font-weight: 600; text-align: left;
+}
+
+/* Inputs */
+.form .input, .form select {
+    width: 100%; height: 40px; border-radius: var(--border-radius); border: 2px solid var(--main-color); /* Softer border */
+    background-color: var(--bg-color); box-shadow: 4px 4px var(--main-color); /* Softer shadow */
+    font-size: 16px; padding: 5px 10px; outline: none; box-sizing: border-box; margin-top: 0.25rem; transition: all 0.2s;
+}
+.form .input:focus, .form select:focus {
+    border: 2px solid var(--input-focus); box-shadow: 4px 4px var(--main-color), 0 0 0 2px var(--input-focus);
+}
+/* The password toggle padding is less critical now as there's no visible toggle button */
+.form .input#password-input { padding-right: 10px; } 
+.blind-check:checked ~ .form .input[type="text"],
+.blind-check ~ .form .input#password-input { -webkit-text-security: disc; }
+.blind-check:checked ~ .form .input#password-input { -webkit-text-security: none !important; }
+
+
+/* 7. Buttons */
+.buttons-container { display: flex; justify-content: space-between; gap: 20px; margin-top: 2rem; width: 100%; }
+.form .submit {
+    height: var(--submit-h); width: 100%; outline: none; cursor: pointer; background-color: var(--submit-color);
+    border: 2px solid var(--main-color); /* Softer border */ box-shadow: 4px 4px var(--main-color); /* Softer shadow */
+    font-weight: 700; letter-spacing: 0.25px; color: var(--form-text-main); font-size: 1rem; border-radius: 0.25rem;
+    transition: all 0.1s; flex: 1; 
+}
+.form .submit:hover { background-color: var(--submit-hover); }
+.form .submit:active { box-shadow: 0px 0px var(--main-color); transform: translate(3px, 3px); background-color: var(--submit-hover); }
+
+/* Webcam and Photo Previews */
+.webcam-section {
+    margin: 1.5rem 0; padding: 1rem; border: 2px solid var(--main-color); /* Softer border */ border-radius: 5px;
+    box-shadow: 4px 4px var(--main-color); /* Softer shadow */ background: var(--bg-color); width: 100%;
+}
+.webcam-container { text-align: center; }
+.webcam { width: 100%; max-width: 340px; height: auto; border-radius: 5px; border: 2px solid var(--main-color); /* Softer border */ }
+.photos-preview { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; justify-content: center; }
+.photos-preview h4 { font-size: 14px; width: 100%; margin-bottom: 5px; }
+.thumbnail { width: 60px; height: 60px; object-fit: cover; border: 1px solid var(--main-color); /* Softer border */ border-radius: 5px; }
+.error-message { color: var(--danger); font-size: 13px; margin-top: 5px; text-align: left; }
+.status-message { padding: 10px; border-radius: 5px; border: 1px solid var(--main-color); background-color: #f0f0f0; color: var(--form-text-main); text-align: center; margin-top: 1rem; }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .card { width: 95vw; padding: 20px; margin: 20px auto; }
+    .buttons-container { flex-direction: column; }
+}

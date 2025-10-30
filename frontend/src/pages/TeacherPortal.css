@@ -1,0 +1,200 @@
+/* --- FINAL CORRECTED TEACHER DASHBOARD STYLES --- */
+
+:root {
+  /* CRITICAL: Unified Lilac/Purple Color System */
+  --color-indigo-dark: #2c3e50;     /* Deep Charcoal (Primary Text/Contrast) */
+  --color-lilac-main:  #886ede;      /* PRIMARY UNIFORM PURPLE/LILAC (Accent Color) */
+  --color-lilac-accent: #a389f8;    /* Medium Purple for CTA hover */
+  --color-lilac-light: #e0e7ff;     /* Lightest Lilac for Borders */
+  --background: #f8f9fc;            /* Crisp White Page Background */
+  --surface: #ffffff;               /* Pure White Card Surface */
+  
+  --text-main: var(--color-indigo-dark); 
+  --text-muted: #888888;            
+  --border-subtle: #eeeeee;         
+  
+  --shadow-key: 0 4px 15px rgba(0, 0, 0, 0.05); 
+  --shadow-lift: 0 10px 20px rgba(108, 92, 231, 0.1); /* Subtle theme lift */
+}
+
+/* 1. Base Dashboard Container (Full Width Setup) */
+.dashboard-container {
+  width: 95%; 
+  max-width: 1400px; 
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: var(--background); 
+}
+
+/* 2. Teacher Profile Card (Greeting) */
+.teacher-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--surface); 
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px; 
+  padding: 30px 40px; 
+  box-shadow: var(--shadow-key);
+  margin-bottom: 40px;
+  transition: all 0.2s ease;
+}
+.teacher-card:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 15px rgba(108, 92, 231, 0.1);
+}
+
+.teacher-name {
+  font-size: 2.2rem; 
+  color: var(--color-lilac-main); 
+  margin: 0 0 10px 0; 
+  font-weight: 800;
+}
+.teacher-email {
+  color: var(--text-muted);
+  font-size: 1rem;
+  display: flex;
+  gap: 30px; 
+  flex-wrap: wrap;
+}
+.meta-detail {
+    font-weight: 500;
+}
+
+/* 3. Class List Section */
+.section-heading {
+  margin-top: 30px;
+  color: var(--color-lilac-main); 
+  font-size: 1.6rem; 
+  margin-bottom: 25px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-lilac-light); 
+  padding-bottom: 8px;
+}
+
+.class-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  gap: 30px; 
+  
+}
+
+.class-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px; 
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-key); 
+  width: 90%;
+  
+  
+  /* CRITICAL FIX: Clean Accent Border */
+  border: 1px solid var(--border-subtle);
+  border-left: 6px solid var(--color-lilac-main); 
+  
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.class-card:hover {
+  transform: translateY(-5px); /* Elegant lift */
+  box-shadow: var(--shadow-lift); 
+}
+
+.class-title {
+  color: var(--color-lilac-main); /* Titles use the rich accent color */
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+.meta {
+  color: var(--text-muted); 
+  font-size: 0.95rem;
+  margin: 4px 0; 
+}
+
+/* --- CTA (View + Arrow Link) --- */
+ /* .class-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  color: var(--color-lilac-main); 
+  background: transparent;
+  font-weight: 700;
+  font-size: 1rem; 
+  text-decoration: none;
+  
+  transition: all 0.3s ease-out;
+}  */
+
+/* .class-card-cta:hover {
+  color: var(--color-lilac-accent); 
+  transform: translateX(6px);
+  filter: brightness(1.1);
+} */
+
+.class-card-cta {
+  /* Layout and Spacing */
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  padding: 8px 12px; /* Added padding to define the button's shape */
+  border-radius: 8px; /* Soft rounding */
+  
+  /* Initial State (Defined but Soft) */
+  color: var(--color-lilac-main); /* Lilac text color */
+  background: var(--color-lilac-light); /* Light Lilac background tint */
+  border: 1px solid var(--color-lilac-light); /* Subtle border for definition */
+  
+  font-weight: 700;
+  font-size: 1rem; 
+  text-decoration: none;
+  cursor: pointer; /* Ensure it looks clickable */
+  
+  /* Transition setup for the push effect */
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.class-card-cta:hover {
+  /* Hover Effect: Text brightens and pushes arrow gently */
+  color: var(--surface); /* Text turns white */
+  background: var(--color-lilac-main); /* Solid Lilac fill on hover */
+  border-color: var(--color-lilac-main);
+  
+  transform: translateX(4px); /* Noticeable push effect */
+  box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3); /* Themed shadow */
+}
+
+.empty-message {
+  color: var(--text-muted);
+  text-align: center;
+  margin: 40px 0;
+  font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 20px 10px;
+    width: 100%;
+  }
+  .teacher-card {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .teacher-name {
+    font-size: 1.5rem;
+  }
+  .teacher-email {
+    gap: 15px;
+  }
+  .class-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

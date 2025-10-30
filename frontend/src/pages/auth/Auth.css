@@ -1,0 +1,110 @@
+.forgot-row {
+  display: flex;
+  justify-content: flex-end; /* right align under password */
+  margin-top: 8px;
+}
+
+/* Make sure anchor looks like a soft lavender link and not a button */
+.forgot-row .forgot-link,
+.forgot-link {
+  display: inline-block;
+  color: #bca0ff;            /* soft lavender */
+  text-decoration: none;
+  font-weight: 600;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+.forgot-row .forgot-link:hover,
+.forgot-link:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Modal backdrop and card */
+.modal-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  z-index: 9999;
+}
+.modal-card {
+  width: 420px;
+  max-width: 94%;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Reset page layout */
+.reset-page-card {
+  max-width: 520px;
+  margin: 28px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Inputs and eye toggle */
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e8e6f8;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fbfdff;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(188,160,255,0.12);
+  border-color: #caa6ff;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+}
+
+/* Buttons inside modal */
+.btn-primary {
+  background: linear-gradient(90deg,#caa6ff,#b07bff);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-ghost {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 520px) {
+  .modal-card { width: 92%; padding: 14px; }
+  .reset-page-card { margin: 16px; padding: 14px; }
+}

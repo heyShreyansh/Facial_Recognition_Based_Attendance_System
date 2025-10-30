@@ -1,0 +1,367 @@
+/* .admin-assign-classes-page {
+	--bg-page: #f9fafe;
+	--card-bg: #fff;
+	--text-color: #243b53;
+	--accent-main: #6b3df1;
+	--accent-light: #9e6df7;
+	--border-color: #e6eef8;
+	font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-assign-classes-page .admin-portal-container{
+	padding:16px;
+	max-width: 860px;
+	margin: 28px auto;
+	background: var(--card-bg);
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(12,18,35,0.06);
+	color: var(--text-color);
+}
+
+.admin-assign-classes-page h2{
+	font-size: 1.6rem;
+	margin: 0 0 10px 0;
+	color: var(--accent-main);
+	text-align: left;
+}
+
+.admin-assign-classes-page .admin-form { margin-top: 12px }
+.admin-assign-classes-page .admin-form div { margin-bottom: 8px }
+
+.admin-assign-classes-page .btn-primary {
+	background: linear-gradient(90deg, var(--accent-main), var(--accent-light));
+	color: white;
+	padding: 10px 14px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.admin-assign-classes-page .btn-ghost{
+	background: transparent;
+	color: var(--accent-main);
+	border: 1px solid rgba(0,0,0,0.06);
+	padding: 8px 10px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.admin-assign-classes-page input[type="checkbox"]{ width: 18px; height: 18px }
+
+.admin-assign-classes-page .teacher-info{
+	margin-top: 8px;
+	color: var(--text-color);
+	font-weight: 600;
+}
+
+
+.admin-assign-classes-page .class-row{
+	padding: 12px;
+	border-radius: 10px;
+	background: #fff;
+	border: 1px solid var(--border-color);
+	display:flex;
+	align-items:center;
+	gap: 12px;
+}
+
+@media (max-width: 760px){
+	.admin-assign-classes-page .admin-portal-container{ padding: 12px }
+	.admin-assign-classes-page .class-row{ flex-direction: column; align-items: flex-start }
+} */
+
+
+
+
+
+
+
+
+
+.admin-assign-classes-page {
+    /* Page variables */
+    --bg-page: #f9fafe;
+    --card-bg: #fff;
+    --text-color: #243b53;
+    --accent-main: #6b3df1;
+    --accent-light: #9e6df7;
+    --border-color: #e6eef8;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-page);
+
+    /* Center the main card vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-assign-classes-page::before {
+    /* diagonal background removed — keep pseudo-element but make invisible to maintain layout if needed */
+    content: '';
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    width: 65%;
+    height: 120%;
+    background: transparent; /* removed lilac gradient */
+    transform: rotate(-18deg);
+    opacity: 0; /* invisible */
+    z-index: 0;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.admin-assign-classes-page .admin-portal-container{
+    padding: 36px 44px;
+    width: 100%;
+    max-width: 1100px; /* wider card */
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: 0 12px 36px rgba(12,18,35,0.08);
+    color: var(--text-color);
+    position: relative;
+    z-index: 2; /* above diagonal */
+    overflow: visible;
+}
+
+/* Diagonal background theme for the card */
+.admin-assign-classes-page .admin-portal-container::before,
+.admin-assign-classes-page .admin-portal-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.admin-assign-classes-page .admin-portal-container::before {
+    background: var(--accent-light);
+    opacity: 0.1;
+    clip-path: polygon(60% 0, 100% 0, 100% 30%); 
+}
+
+.admin-assign-classes-page .admin-portal-container::after {
+    background: var(--accent-main);
+    opacity: 0.05;
+    clip-path: polygon(50% 0, 100% 0, 100% 40%); 
+}
+
+/* Header (Teachers / Assign Classes to...) */
+.admin-assign-classes-page h2{
+    font-size: 1.8rem;
+    margin: 0 0 25px 0;
+    color: var(--text-color);
+    text-align: left;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+/* Teachers List Header (for 'Create Teacher' button alignment) */
+.admin-assign-classes-page .list-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Back Button styling (matches Remove button style for a similar feel) */
+.admin-assign-classes-page .back-button-container {
+    /* position the back button inside the card at the top-left */
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    margin: 0;
+    z-index: 6;
+}
+
+.admin-assign-classes-page .back-button {
+    background: #ffffff; /* white card like button */
+    color: var(--text-color);
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.12s, transform 0.08s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-assign-classes-page .back-button:hover {
+    background: #f6f7fb;
+    transform: translateY(-1px);
+}
+
+/* Ensure header and content are not overlapped by the absolute back button */
+.admin-assign-classes-page .admin-portal-container > h2 {
+    margin-top: 8px;
+    padding-left: 6px; /* small offset from back button */
+}
+
+/* Assignment List Styling (Reusing .class-row style for consistency) */
+.admin-assign-classes-page .assignment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.admin-assign-classes-page .class-assignment-card {
+    padding: 18px 22px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 10px 22px rgba(37, 42, 66, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    z-index: 3;
+}
+
+.admin-assign-classes-page .class-assignment-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+    /* Remove flex alignment to let checkbox and text sit nicely */
+    flex-grow: 1; 
+}
+
+.admin-assign-classes-page .class-assignment-details {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.admin-assign-classes-page input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-main);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    margin: 0;
+    border-radius: 4px;
+    flex-shrink: 0; /* Prevents the checkbox from shrinking */
+}
+
+/* Teacher card layout to match screenshot: name left with small meta line, buttons on the right */
+.admin-assign-classes-page .teacher-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-assign-classes-page .teacher-meta {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+}
+
+.admin-assign-classes-page .teacher-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.admin-assign-classes-page .teacher-sub {
+    font-size: 0.85rem;
+    color: #677389;
+    margin-top: 6px;
+}
+
+/* Shared Primary Button Style (Assign, Create, Save) */
+.admin-assign-classes-page .btn-primary {
+    background: linear-gradient(90deg, var(--accent-main), var(--accent-light));
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    white-space: nowrap;
+}
+
+.admin-assign-classes-page .btn-primary:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+
+/* Save Assignments Button specific style */
+.admin-assign-classes-page .save-assignments-btn {
+    display: block;
+    width: 100%;
+    max-width: 220px; 
+    margin: 0; /* Left align the button */
+    font-size: 1rem;
+    padding: 12px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Remove Button */
+.admin-assign-classes-page .btn-remove{
+    background: #ffffff;
+    color: #7b8898;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.12s, transform 0.08s;
+    white-space: nowrap;
+}
+
+.admin-assign-classes-page .btn-remove:hover {
+    background: #e2e4ea;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 760px){
+    .admin-assign-classes-page .admin-portal-container{ padding: 18px }
+    .admin-assign-classes-page .class-row{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+    }
+    .admin-assign-classes-page .teacher-actions {
+        margin-top: 12px;
+        align-self: stretch;
+        justify-content: space-between;
+    }
+    .admin-assign-classes-page .btn-primary,
+    .admin-assign-classes-page .btn-remove {
+        flex-grow: 1;
+        text-align: center;
+    }
+    .admin-assign-classes-page .save-assignments-btn {
+        max-width: 100%;
+        margin: 0;
+    }
+    .admin-assign-classes-page .class-assignment-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

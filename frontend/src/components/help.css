@@ -1,0 +1,38 @@
+:root{
+  --admin-bg: #fbf8ff;
+  --admin-card: #ffffff;
+  --accent-1: #7a56d9;
+  --accent-2: #a074ff;
+  --muted: #6b7280;
+}
+
+.full-screen-wrapper{
+  display:flex;
+  gap:24px;
+  padding:24px;
+  align-items:flex-start;
+  background: linear-gradient(180deg,var(--admin-bg), #f6f3ff);
+}
+
+.left-dashboard-area{ flex:1 1 60%; }
+.right-graphic-area{ flex:1 1 40%; display:flex; align-items:center; justify-content:center; }
+
+.admin-portal-container{ background:var(--admin-card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(80,60,120,0.06); }
+.dashboard-header-row{ display:flex; justify-content:space-between; align-items:center; gap:12px }
+.action-buttons-group{ display:flex; gap:8px }
+
+.student-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px }
+.student-item{ padding:12px; border-radius:8px; background:linear-gradient(90deg,#fff,#fbf8ff); display:flex; justify-content:space-between; align-items:center }
+.student-count-meta{ margin-left:12px; font-size:12px; color:var(--muted) }
+
+.btn-primary{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+.btn-ghost{ background:transparent; border:1px solid rgba(0,0,0,0.06); padding:6px 10px; border-radius:8px; cursor:pointer }
+.btn-view-students{ background:#fff; border:1px solid rgba(122,86,217,0.12); padding:6px 8px; border-radius:6px; cursor:pointer }
+
+.admin-form{ display:flex; flex-direction:column; gap:8px }
+.admin-form input, .admin-form label { font-size:14px }
+
+@media (max-width: 880px){
+  .full-screen-wrapper{ flex-direction:column; }
+  .right-graphic-area{ order:2 }
+}

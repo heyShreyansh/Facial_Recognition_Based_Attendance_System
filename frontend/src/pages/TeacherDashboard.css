@@ -1,0 +1,234 @@
+:root {
+  /* Theme Colors (Harmonized with Admin Login) */
+  --color-indigo-dark: #2c3e50;     /* Primary Text/Contrast */
+  --color-lilac-main: #a389f8;      /* PRIMARY UNIFORM PURPLE/LILAC (Accent Color) */
+  --color-lilac-accent: #a389f8;    /* Medium Purple for CTA hover */
+  --color-lilac-light: #e0e7ff;     /* Lightest Lilac for Borders */
+  --background: #f8f9fc;            /* Crisp White Page Background */
+  --surface: #ffffff;               /* Pure White Card Surface */
+  
+  /* CRITICAL BACKGROUND COLOR from Admin Login Image */
+  --color-page-bg: #e8e8e8;         /* Gray background */
+  --color-diagonal-fill: rgb(209, 193, 255); /* Lilac color from diagonal */
+  
+  --text-muted: #888888;            
+  
+  --shadow-key: 0 4px 15px rgba(0, 0, 0, 0.05); 
+  --shadow-lift: 0 10px 20px rgba(108, 92, 231, 0.1); 
+
+  /* Start Button Colors */
+  --btn-start-bg: #38c172; 
+  --btn-start-hover: #1e8449;
+  --shadow-success: 0 4px 10px rgba(56, 193, 114, 0.4);
+}
+
+/* Base Body Styling (Sets context for the dashboard card) */
+body {
+  background-color: var(--color-page-bg); /* Gray background outside the card */
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  align-items: flex-start; /* Align to top */
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 40px; /* Push content down slightly for aesthetic */
+}
+
+/* --- 1. Main Dashboard Container (with Diagonal Background) --- */
+.dashboard-container {
+  width: 95%; 
+  max-width: 900px; 
+  margin: 0 auto 40px auto; /* Centered with bottom margin */
+  padding: 30px;
+  box-sizing: border-box;
+  background: var(--surface); /* White card background */
+  border-radius: 18px; 
+  box-shadow: var(--shadow-key);
+  
+  /* CRITICAL: Positioning for the pseudo-element and z-indexing */
+  position: relative;
+  overflow: hidden; /* This hides the parts of ::before that go outside */
+  z-index: 10; /* Ensures the main container is above body, but its content can be above its ::before */
+}
+
+/* CRITICAL FIX: The Diagonal Background Pseudo-element (Re-introduced) */
+.dashboard-container::before {
+    content: "";
+    width: 1000px; /* Large enough to cover the diagonal of the wide container */
+    height: 1000px;
+    background-color: var(--color-diagonal-fill); /* The soft lilac color */
+    transform: rotate(45deg);
+    /* Positioned high and left to cover the top left diagonal area */
+    top: -550px; /* Adjust to move it up */
+    left: -500px; /* Adjust to move it left */
+    z-index: 1; /* Place behind all actual content, but above container's base background */
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* --- 2. Content Sections (Ensure they are above the diagonal background) --- */
+/* Apply higher z-index to all direct children that should be visible */
+.teacher-card,
+.start-attendance-wrapper, /* NEW: Ensure button wrapper is visible */
+.section-heading, 
+.class-list {
+    z-index: 5; /* Higher than ::before's z-index (1) */
+    position: relative; /* Needed for z-index to take effect */
+}
+
+
+/* Teacher Profile Card (Greeting) */
+.teacher-card {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: var(--surface); /* Explicit white background */
+  border: 1px solid var(--color-lilac-light);
+  border-radius: 14px; 
+  padding: 30px 40px; 
+  box-shadow: var(--shadow-key);
+  margin-bottom: 40px;
+  transition: all 0.2s ease;
+}
+
+.teacher-name {
+  font-size: 2.2rem; 
+  color: var(--color-lilac-main); /* Correct lilac for the greeting */
+  margin: 0 0 10px 0; 
+  font-weight: 800;
+}
+.teacher-email {
+  color: var(--text-muted);
+  font-size: 1rem;
+  display: flex;
+  gap: 30px; 
+  flex-wrap: wrap;
+}
+
+/* --- 3. Start Attendance Button (CRITICAL FIX: Visibility and Styling) --- */
+/* Target the wrapper that applies inline styles for centering */
+div[style*="justifyContent: center"] {
+    margin-bottom: 30px !important;
+    /* z-index and position are now on the .start-attendance-wrapper class in JSX */
+}
+/* IMPORTANT: Target the actual button component within its wrapper */
+.start-attendance-btn {
+    /* CRITICAL FIX: Overrides all conflicting inline styles */
+    background-color: var(--btn-start-bg) !important;
+    color: white !important;
+    border: none !important;
+    
+    padding: 14px 30px !important; 
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(56, 193, 114, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.start-attendance-btn:hover:not(:disabled) {
+    background-color: var(--btn-start-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(56, 193, 114, 0.6);
+}
+
+
+/* --- 4. Class List Section --- */
+.section-heading {
+  margin-top: 30px;
+  color: var(--color-lilac-main); 
+  font-size: 1.6rem; 
+  margin-bottom: 25px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-lilac-light); 
+  padding-bottom: 8px;
+}
+
+.class-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  gap: 30px; 
+}
+
+.class-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px; 
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-key); 
+  border: 1px solid var(--border-subtle);
+  border-left: 6px solid var(--color-lilac-main); 
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:85%;
+}
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift); 
+}
+
+.class-title {
+  color: var(--color-lilac-main); 
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+.meta {
+  color: var(--text-muted); 
+  font-size: 0.95rem;
+  margin: 4px 0; 
+}
+
+/* --- CTA (View Button in Class Card) --- */
+.class-card-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  padding: 0;
+  color: var(--color-lilac-main); 
+  background: transparent;
+  font-weight: 700;
+  font-size: 1rem; 
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+
+.class-card-cta:hover {
+  color: var(--color-lilac-accent); 
+  transform: translateX(6px); 
+  filter: brightness(1.1);
+}
+
+.empty-message {
+  color: var(--text-muted);
+  text-align: center;
+  margin: 40px 0;
+  font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 20px 10px;
+    width: 100%;
+  }
+  .teacher-card {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .teacher-name {
+    font-size: 1.5rem;
+  }
+  .teacher-email {
+    gap: 15px;
+  }
+  .class-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

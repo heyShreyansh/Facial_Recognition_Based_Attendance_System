@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Small safe polyfill so any accidental `process` reference in client bundles doesn't crash the page -->
+    <script>window.process = window.process || { env: {} };</script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

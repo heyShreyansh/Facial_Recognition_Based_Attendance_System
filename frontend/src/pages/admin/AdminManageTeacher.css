@@ -1,0 +1,98 @@
+/* Diagonal purple palette for Manage Teacher page */
+.admin-manage-teacher {
+  position: relative;
+  max-width: 920px;
+  margin: 36px auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: linear-gradient(180deg,#fff,#fff);
+  box-shadow: 0 10px 30px rgba(20,20,20,0.08);
+  overflow: hidden;
+}
+
+/* decorative diagonal triangle */
+.admin-manage-teacher::before{
+  content:"";
+  position:absolute;
+  left:-8%;
+  top:-8%;
+  width:140%;
+  height:68%;
+  background: linear-gradient(135deg,#EBD9FF 0%, #D1B7FF 45%, #B07BFF 100%);
+  transform: rotate(-7deg);
+  clip-path: polygon(0 0, 72% 0, 36% 100%, 0% 100%);
+  z-index:0;
+  pointer-events:none;
+}
+.admin-manage-teacher > *{ position:relative; z-index:1; }
+
+/* header */
+.admin-manage-teacher .manage-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+.admin-manage-teacher .manage-title{
+  margin:0;
+  font-size:28px;
+  font-weight:800;
+  color:#271b2d;
+}
+
+/* info card */
+.admin-manage-teacher .teacher-info{
+  background: rgba(255,255,255,0.98);
+  border-radius:12px;
+  padding:18px;
+  box-shadow: 0 6px 18px rgba(30,20,50,0.06);
+  border:1px solid rgba(240,238,255,0.85);
+  margin-bottom:16px;
+}
+.admin-manage-teacher .teacher-meta{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  color:#3b2e48;
+}
+.admin-manage-teacher .teacher-meta .label{ font-weight:700; color:#1f1226; }
+
+/* assigned classes list */
+.admin-manage-teacher .assigned-list{ margin-top:12px; display:flex;flex-direction:column; gap:10px; }
+.admin-manage-teacher .assigned-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:10px;
+  background: linear-gradient(180deg,#fff,#fbf8ff);
+  border:1px solid rgba(230,225,255,0.8);
+}
+.admin-manage-teacher .assigned-item .cls-name{ font-weight:700; color:#2b1f3b; }
+
+/* buttons */
+.admin-manage-teacher .btn{
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  border:none;
+}
+.admin-manage-teacher .btn-primary{
+  background: linear-gradient(90deg,#dbc3ff 0%,#b07bff 100%);
+  color:#fff;
+  box-shadow: 0 6px 12px rgba(176,123,255,0.16);
+}
+.admin-manage-teacher .btn-ghost{
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.06);
+  color:#2b1f3b;
+}
+
+/* responsive */
+@media (max-width:720px){
+  .admin-manage-teacher{ padding:18px; margin:18px; }
+  .admin-manage-teacher .manage-title{ font-size:20px; }
+  .admin-manage-teacher .teacher-info{ padding:12px; }
+}

@@ -1,0 +1,69 @@
+/* --- UIVERSE BLIND INPUT FORM ADAPTATION - LILAC THEME (Login Version) --- */
+
+/* 1. Global Variables (No Change) */
+:root {
+    --form-primary-lilac: #bfcaff;
+    --form-primary-dark: rgba(31, 41, 55, 0.5); 
+    --form-text-main: #181a22;
+    --form-background: #fcfbf7;
+    --input-focus: var(--form-primary-lilac); 
+    --main-color: var(--form-primary-dark);   
+    --font-color: var(--form-text-main);
+    --submit-color: var(--form-primary-lilac);
+    --submit-hover: #a1a9e3;
+    --p: 28px; 
+    --submit-h: 45px; 
+    --space-y: 0.75rem;
+    --border-radius: 5px;
+    --eye-size: 8px; 
+    --accent-color: #7d89ff; 
+}
+
+/* Base and Avatar Styles (No Change) */
+/* ... */
+
+/* 5. Form Content (.form) */
+.form { order: 1; position: relative; display: flex; align-items: center; flex-direction: column; width: 100%; gap: 15px; }
+.form .title { width: 100%; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 1rem; color: var(--main-color); border-bottom: 2px solid rgba(0, 0, 0, 0.15); }
+
+/* Form Groups */
+.form-group { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+
+/* Labels and Inputs (No Change) */
+.form .label_input { font-size: 1rem; margin-top: 0; color: var(--main-color); font-weight: 600; text-align: left; }
+.form .input { /* ... input styles ... */ margin-top: 0; }
+.form .input:focus { /* ... focus styles ... */ }
+
+
+/* --- CRITICAL LAYOUT FIX: Password Group and Forgot Link Positioning --- */
+
+.password-group {
+    /* Ensure group has normal stacking margin */
+    margin-bottom: 5px; 
+    
+    /* Make this group the flex container for its own contents */
+    display: flex;
+    flex-direction: column;
+}
+
+.password-group .forgot-link {
+    /* Style and position the link */
+    font-size: 0.9rem;
+    color: var(--main-color);
+    text-decoration: underline;
+    transition: color 0.2s;
+    
+    /* FIX: Remove negative margin and explicitly align to the right */
+    align-self: flex-end; 
+    margin-top: 5px; /* Adds space below the input field */
+    margin-bottom: 5px; /* Provides consistent spacing before the submit button */
+}
+
+.password-group .forgot-link:hover {
+    color: var(--input-focus);
+}
+
+
+/* 7. Submit Button */
+.buttons-container { width: 100%; margin-top: 1.5rem; }
+/* ... (All other CSS remains the same) ... */

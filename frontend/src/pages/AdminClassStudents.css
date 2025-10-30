@@ -1,0 +1,247 @@
+/* Page background + centered content */
+.admin-class-students-page {
+  /* center the main card and avoid using full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #f5f6fb 0%, #f2f5ff 100%);
+  padding: 48px 18px;
+  box-sizing: border-box;
+}
+
+/* Main centered container */
+.admin-class-students-page .admin-container {
+  max-width: 1100px;
+  width: 100%;
+  /* keep the card visually centered and not full height */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(38,26,97,0.08);
+  padding: 28px;
+  overflow: auto;
+  max-height: calc(100vh - 120px); /* allows scroll inside card on small screens */
+}
+
+/* Two-column layout: classes left, students right */
+.admin-class-students-page .main-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Left column: keep existing class-card styles but contained */
+.admin-class-students-page .class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+}
+
+/* Right column: students panel card */
+.admin-class-students-page .students-panel {
+  background: linear-gradient(180deg,#ffffff,#fbfbff);
+  border-radius: 12px;
+  border: 1px solid #eef0f8;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(67,54,150,0.03);
+  height: fit-content;
+}
+
+/* students panel header */
+.admin-class-students-page .students-panel .students-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.admin-class-students-page .students-panel .students-heading h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #3a2670;
+  font-weight: 800;
+}
+.admin-class-students-page .students-panel .students-count {
+  font-size: 13px;
+  color: #6b6f76;
+}
+
+/* Student list */
+.admin-class-students-page .student-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.admin-class-students-page .student-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px; /* slightly larger */
+  border-radius: 12px;
+  border: 1px solid #eef0f8;
+  background: #fff;
+}
+
+/* Name / roll */
+.admin-class-students-page .student-meta { display:flex; flex-direction:column; }
+.admin-class-students-page .student-name { font-weight:800; color:#241a45; font-size:15px; }
+.admin-class-students-page .student-roll { font-size:13px; color:#6b6f76; margin-top:6px; }
+
+/* Controls area (keeps layout stable if buttons are present) */
+.admin-class-students-page .student-controls { display:flex; gap:8px; align-items:center; }
+
+/* Utility: back button */
+.admin-class-students-page .back-row { margin-bottom: 12px; }
+.admin-class-students-page .btn-back {
+  background: transparent;
+  border: 1px solid #e7e3ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #41307a;
+  cursor: pointer;
+}
+
+/* Restore non-distorted class-card layout used in admin portal */
+.admin-class-students-page .class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0;
+  max-width: 980px;
+  padding: 0;
+}
+
+.admin-class-students-page .class-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px; /* increased padding to make box bigger */
+  border-radius: 12px;
+  border: 1px solid #eef0f8;
+  background: #fff;
+  box-shadow: none;
+  transition: transform .12s ease, box-shadow .12s ease;
+  cursor: pointer;
+  min-height: 84px; /* slightly taller cards */
+}
+
+.admin-class-students-page .class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(67,54,150,0.06);
+}
+
+.admin-class-students-page .class-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-class-students-page .class-title {
+  margin: 0;
+  font-size: 18px; /* slightly larger title */
+  font-weight: 700;
+  color: #241a45;
+}
+
+.admin-class-students-page .meta {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #6b6f76;
+}
+
+.admin-class-students-page .class-card-cta {
+  font-weight: 600;
+  color: #6b6f76;
+  margin-left: 12px;
+}
+
+/* Styles for the "View Students" page — non‑intrusive, won't change class-card layout */
+
+.admin-class-students-page .students-panel {
+  margin-top: 18px;
+  max-width: 980px;
+  width: 100%;
+  background: transparent;
+  padding: 0;
+}
+
+.admin-class-students-page .students-heading {
+  font-size: 18px;
+  color: #41307a;
+  margin: 8px 0 12px;
+  font-weight: 700;
+}
+
+/* Student list */
+.admin-class-students-page .student-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-class-students-page .student-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #eef0f8;
+  background: linear-gradient(180deg, #ffffff, #fbfbff);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.admin-class-students-page .student-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(40,30,80,0.04);
+}
+
+/* Name / meta */
+.admin-class-students-page .student-meta {
+  display: flex;
+  flex-direction: column;
+}
+.admin-class-students-page .student-name {
+  font-weight: 700;
+  color: #241a45;
+  margin-bottom: 4px;
+}
+.admin-class-students-page .student-roll {
+  font-size: 12px;
+  color: #6b6f76;
+}
+
+/* Optional controls area (keeps layout stable even if buttons present) */
+.admin-class-students-page .student-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Small screens: stack content but keep class-card styles intact */
+@media (max-width: 900px) {
+  .admin-class-students-page .main-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-class-students-page .students-panel {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-class-students-page .student-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .admin-class-students-page .student-controls {
+    align-self: stretch;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}

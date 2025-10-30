@@ -1,0 +1,135 @@
+/* Admin portal styles (re-uses TeacherPortal variables) */
+
+/* .admin-portal-container, .dashboard-container {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 26px;
+  background: var(--bg, #f9fafe);
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(12,18,35,0.06);
+  box-sizing: border-box;
+  color: var(--text, #243b53);
+}
+
+.admin-form label { display: block; margin-top: 12px; font-weight: 600; color: #304a6b; }
+.admin-form input, .admin-form select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d4dde8; margin-top: 6px; }
+
+.btn-primary { background: linear-gradient(90deg,#6b3df1,#9e6df7); color: white; padding: 10px 14px; border-radius: 8px; border: none; font-weight: 700; }
+.btn-ghost { background: transparent; border: none; color: #3b4f6b; }
+
+.student-list { list-style: none; padding: 0; margin-top: 12px; }
+.student-item { display:flex; justify-content:space-between; align-items:center; padding: 12px; border-radius: 8px; border:1px solid #e6eef8; margin-bottom: 8px; background:white; }
+
+@media (max-width: 680px) {
+  .admin-portal-container { padding: 18px; }
+} */
+
+
+
+
+/* --- ADMIN PORTAL THEME INTEGRATION (SPLIT-SCREEN) --- */
+
+/* 1. Global Variables (Based on Admin Portal's existing Lilac/Blue) */
+:root {
+    --bg-page: #f9fafe; /* Admin Page BG */
+    --card-bg: #fff;
+    --text-color: #243b53;
+    --accent-main: #6b3df1; /* Primary Purple */
+    
+    --accent-light: #9e6df7; /* Light Purple/Highlight */
+    --border-color: #e6eef8;
+    
+    /* UIVERSE MAPPING (Theme Matched) */
+    --svg-primary: var(--accent-main);
+    --svg-secondary: var(--accent-light);
+    --svg-mid: #5e7eb6;       /* Medium Blue/Gray */
+    --svg-dark: #3f3d56;      /* Darkest SVG shade */
+    
+    /* Glass Effect Base */
+    --bg-glass-tint: rgba(255, 255, 255, 0.95); 
+}
+
+/* 2. Full Screen Container (Implementing the Split) */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.full-screen-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-page); /* Fallback BG */
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+/* 3. Uiverse Split Structure */
+.left-dashboard-area {
+    width: 70%; 
+    height: 100%;
+    overflow-y: auto; /* Allows scrolling inside the dashboard area */
+    padding: 30px;
+    background-color: var(--bg-page);
+    z-index: 10;
+}
+
+/* Ensure the left dashboard sits above the decorative graphic so artwork doesn't overlay content */
+.left-dashboard-area { position: relative; z-index: 20; }
+
+.right-graphic-area {
+    width: 30%;
+    height: 100%;
+    background: radial-gradient(circle, var(--accent-main) 30%, var(--accent-light) 100%);
+    z-index: 1;
+}
+
+/* Prevent the right graphic SVG from overflowing its container and covering left content */
+.right-graphic-area { overflow: hidden; }
+.right-graphic-area .img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    transform: scale(1.1);
+}
+
+/* Remove the top-left triangular overlay while keeping the decorative graphic visible.
+   Adjust the polygon coordinates if you want a larger/smaller cutout. */
+.right-graphic-area svg {
+    clip-path: polygon(24% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 24%);
+}
+
+/* 4. Admin Portal Content Styling (Your Original Content Embedded) */
+.admin-portal-container, .dashboard-container {
+    /* Centered effect applied to the content block within the scrollable area */
+    max-width: 980px; 
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 26px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 6px 22px rgba(12,18,35,0.06);
+    box-sizing: border-box;
+    color: var(--text-color);
+}
+
+.admin-form label { display: block; margin-top: 12px; font-weight: 600; color: #304a6b; }
+.admin-form input, .admin-form select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #d4dde8; margin-top: 6px; }
+
+.btn-primary { background: linear-gradient(90deg, var(--accent-main), var(--accent-light)); color: white; padding: 10px 14px; border-radius: 8px; border: none; font-weight: 700; }
+.btn-ghost { background: transparent; border: none; color: #3b4f6b; }
+
+.student-list { list-style: none; padding: 0; margin-top: 12px; }
+.student-item { display:flex; justify-content:space-between; align-items:center; padding: 12px; border-radius: 8px; border:1px solid #e6eef8; margin-bottom: 8px; background:white; }
+
+/* 5. Responsive Adjustments */
+@media (max-width: 992px) {
+    .left-dashboard-area {
+        width: 100%; /* Take full width on smaller screens */
+    }
+    .right-graphic-area {
+        display: none; /* Hide SVG graphic on tablets/phones */
+    }
+}
+@media (max-width: 680px) {
+    .admin-portal-container { padding: 18px; }
+}

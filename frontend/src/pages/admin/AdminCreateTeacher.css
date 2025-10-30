@@ -1,0 +1,189 @@
+
+/* --- ADMIN CREATE TEACHER STYLES (DIAGONAL PURPLE THEME ADAPTATION) ---
+/* --- ADMIN CREATE TEACHER STYLES (DIAGONAL PURPLE THEME) ---
+	 The user-provided design adapted but FULLY SCOPED under
+	 .admin-create-teacher-page so it cannot affect other pages.
+	 Note: avoided using :root or body to prevent global leakage. */
+
+/* Scoped variables (page-local via custom properties on the wrapper) */
+.admin-create-teacher-page {
+	/* scoped variables for this page only (adapted from user's :root) */
+	--color-main-bg: #e8e8e8;
+	--color-card-bg: rgb(255, 255, 255);
+	--color-diagonal-accent: rgb(209, 193, 255);
+	--color-submit-btn: rgb(162, 104, 255);
+	--color-submit-hover: rgb(126, 84, 255);
+	--color-text-dark: #2c2c2c;
+	--color-input-border: rgb(173, 173, 173);
+	--color-error: #b00020;
+	--form-max-width: 600px;
+	--input-height: 40px;
+
+	/* keep the wrapper visually centered if it sits at top-level */
+	display: block;
+}
+
+.admin-create-teacher-page.dashboard-container {
+	width: 90%;
+	max-width: var(--form-max-width);
+	margin: 40px auto;
+	background-color: var(--color-card-bg);
+	padding: 40px;
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
+	position: relative;
+	overflow: hidden;
+	border-radius: 15px;
+	z-index: 10;
+}
+
+.admin-create-teacher-page.dashboard-container::before {
+	position: absolute;
+	content: "";
+	width: 800px;
+	height: 800px;
+	background-color: var(--color-diagonal-accent);
+	transform: rotate(45deg);
+	top: -400px;
+	left: -400px;
+	z-index: 1;
+	border-radius: 30px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
+}
+
+.admin-create-teacher-page.dashboard-container h2 {
+		font-size: 2.2em;
+		color: var(--color-text-dark);
+		font-weight: 700;
+		margin: 5px 0 30px 0;
+		z-index: 2;
+		position: relative;
+		text-align: center;
+}
+
+.admin-create-teacher-page.dashboard-container h4 {
+		color: var(--color-text-dark);
+		font-size: 1.1em;
+		font-weight: 600;
+		margin-top: 25px;
+		margin-bottom: 10px;
+		z-index: 2;
+		position: relative;
+}
+
+/* Form and inputs */
+.admin-create-teacher-page .dashboard-container form {
+		z-index: 2;
+		position: relative;
+		padding: 0;
+		width: 100%;
+		margin: 0 auto;
+}
+
+.admin-create-teacher-page .dashboard-container form > div {
+		z-index: 2;
+}
+
+.admin-create-teacher-page.dashboard-container input,
+.admin-create-teacher-page.dashboard-container input[type="text"],
+.admin-create-teacher-page.dashboard-container input[type="email"],
+.admin-create-teacher-page.dashboard-container input[type="password"] {
+	display: block;
+	width: 100%;
+	height: var(--input-height);
+	background-color: rgba(255,255,255,0.95); /* visible over the diagonal */
+	border: 1px solid rgba(0,0,0,0.08);
+	color: var(--color-text-dark);
+	font-size: 1em;
+	font-weight: 500;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	margin-top: 8px;
+	transition: border-color 0.12s, box-shadow 0.12s;
+	z-index: 4; /* ensure inputs are above the diagonal pseudo-element */
+	position: relative;
+	border-radius: 6px;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset;
+}
+
+.admin-create-teacher-page.dashboard-container input:focus {
+	outline: none;
+	border-color: var(--color-submit-btn);
+	box-shadow: 0 4px 14px rgba(108,92,231,0.08);
+}
+
+.admin-create-teacher-page.dashboard-container input::placeholder {
+	color: rgba(44,44,44,0.45);
+}
+
+/* First/Last name inline layout */
+.admin-create-teacher-page.dashboard-container form > div:first-of-type {
+		display: flex;
+		gap: 12px;
+}
+.admin-create-teacher-page.dashboard-container form > div:first-of-type input {
+		flex: 1;
+}
+
+/* Checkbox row styling */
+.admin-create-teacher-page.dashboard-container div[style*="align-items: center"] {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		margin-top: 8px;
+		z-index: 2;
+		position: relative;
+		color: var(--color-text-dark);
+		font-size: 0.95em;
+}
+.admin-create-teacher-page.dashboard-container input[type="checkbox"] {
+		width: 18px;
+		height: 18px;
+		min-width: 18px;
+		accent-color: var(--color-submit-btn);
+		border: 1px solid var(--color-input-border);
+		cursor: pointer;
+		margin-top: 0;
+}
+
+/* Submit button (scoped) */
+.admin-create-teacher-page.dashboard-container .btn-primary {
+		width: 100%;
+		border: none;
+		background-color: var(--color-submit-btn);
+		height: 45px;
+		color: white;
+		font-size: 1em;
+		font-weight: 700;
+		letter-spacing: 1px;
+		cursor: pointer;
+		border-radius: 5px;
+		transition: background-color 0.2s;
+		margin-top: 30px;
+		z-index: 2;
+		position: relative;
+}
+
+.admin-create-teacher-page.dashboard-container .btn-primary:hover {
+		background-color: var(--color-submit-hover);
+}
+
+/* Error helper */
+.admin-create-teacher-page .field-error {
+		color: var(--color-error);
+		font-size: 0.9rem;
+		margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+		.admin-create-teacher-page .dashboard-container {
+				padding: 20px;
+		}
+		.admin-create-teacher-page .dashboard-container form > div:first-of-type {
+				flex-direction: column;
+				gap: 0;
+		}
+}
+
+/* End of scoped Create Teacher styles */
+

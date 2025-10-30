@@ -1,0 +1,169 @@
+.admin-teachers-page {
+	--color-diagonal-accent: rgb(209, 193, 255);
+	--color-submit-btn: rgb(162, 104, 255);
+	--color-submit-hover: rgb(126, 84, 255);
+	--card-bg: #fff;
+	--surface: #fff;
+	--text-main: #2c2c2c;
+}
+
+.admin-teachers-page.admin-portal-container{
+	max-width: 900px;
+	margin: 40px auto;
+	background: var(--card-bg);
+	padding: 30px;
+	border-radius: 14px;
+	box-shadow: 0 8px 20px rgba(108,92,231,0.06);
+	position: relative;
+	overflow: hidden;
+}
+
+/* Diagonal accent on the left */
+.admin-teachers-page.admin-portal-container::before{
+	content: "";
+	position: absolute;
+	width: 700px;
+	height: 700px;
+	background: var(--color-diagonal-accent);
+	transform: rotate(45deg);
+	left: -380px;
+	top: -380px;
+	z-index: 1;
+	border-radius: 20px;
+}
+
+.admin-teachers-page h2{ z-index: 2; position: relative; color:var(--text-main) }
+
+.admin-teachers-page .student-list{ list-style:none; padding:0; margin:20px 0; display:flex; flex-direction:column; gap:12px; z-index:2; position:relative }
+.admin-teachers-page .student-item{ padding:16px; border-radius:10px; background: linear-gradient(90deg, var(--surface), rgba(255,255,255,0.95)); display:flex; justify-content:space-between; align-items:center; border:1px solid #f0efff }
+
+.admin-teachers-page .btn-primary{ background: linear-gradient(90deg,var(--color-diagonal-accent), var(--color-submit-btn)); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700 }
+.admin-teachers-page .btn-primary:hover{ background: linear-gradient(90deg,var(--color-submit-btn), var(--color-submit-hover)) }
+
+.admin-teachers-page .btn-ghost{ background: transparent; border: 1px solid rgba(0,0,0,0.08); padding:8px 10px; border-radius:8px; cursor:pointer }
+
+@media (max-width: 880px){
+	.admin-teachers-page .btn-primary{ width:100% }
+	.admin-teachers-page .student-item{ flex-direction:column; align-items:flex-start; gap:8px }
+}
+
+/* ensure page content sits above decorative diagonal */
+.admin-teachers-page *{ position: relative; z-index: 2 }
+
+/* Main container with diagonal triangle accent */
+.admin-main-box{
+  position: relative;
+  max-width: 980px;
+  margin: 36px auto;
+  background: linear-gradient(180deg,#fff,#fff);
+  padding: 34px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(20,20,20,0.08);
+  overflow: hidden;
+}
+
+/* diagonal triangle background (keeps content on top) */
+.admin-main-box::before{
+  content: "";
+  position: absolute;
+  left: -10%;
+  top: -10%;
+  width: 140%;
+  height: 70%;
+  background: linear-gradient(135deg, #DCC6FF 0%, #C3A0FF 45%, #B07BFF 100%);
+  transform: rotate(-8deg);
+  clip-path: polygon(0 0, 70% 0, 35% 100%, 0% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ensure children render above the decorative triangle */
+.admin-main-box > * { position: relative; z-index: 1; }
+
+/* header */
+.admin-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom: 24px;
+}
+.admin-heading{
+  margin:0;
+  font-size:32px;
+  color:#30243f;
+  font-weight:700;
+}
+.btn-create{
+  background: linear-gradient(90deg,#caa6ff,#b07bff);
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 14px rgba(176,123,255,0.18);
+}
+
+/* error / loading */
+.admin-error{ color:#b00020; margin-top:8px; }
+.admin-loading{ color:#666; margin-top:8px; }
+
+/* teacher list */
+.teacher-list{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  margin-top:12px;
+}
+
+/* teacher card */
+.teacher-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px;
+  border-radius:12px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 6px 18px rgba(40,40,90,0.04);
+  min-height:96px; /* increased height for spacious look */
+  border: 1px solid rgba(240,238,255,0.8);
+}
+.teacher-name{
+  font-size:20px;
+  font-weight:800;
+  color:#251b2f;
+}
+
+/* actions */
+.teacher-actions{ display:flex; gap:10px; align-items:center; }
+
+/* primary button style (purple gradient) */
+.btn-primary{
+  background: linear-gradient(90deg,#d6baff 0%,#b07bff 100%);
+  color:#fff;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 12px rgba(176,123,255,0.16);
+}
+
+/* ghost button */
+.btn-ghost{
+  background: #fff;
+  border:1px solid rgba(0,0,0,0.06);
+  padding:10px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* responsive tweaks */
+@media (max-width:720px){
+  .admin-main-box{ padding:20px; margin: 18px; }
+  .admin-heading{ font-size:22px; }
+  .teacher-card{ min-height:78px; padding:12px; }
+  .btn-create{ padding:8px 12px; }
+}
+

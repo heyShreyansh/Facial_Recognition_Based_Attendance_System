@@ -1,0 +1,318 @@
+/* BEGIN: Copied from AdminPortal.css - full standalone admin styles */
+.admin-dashboard-page :root {
+  --color-indigo-dark: #2c3e50;
+  --color-lilac-main: #6c5ce7;
+  --color-lilac-accent: #a389f8;
+  --color-lilac-light: #e0e7ff;
+  --background: #f8f9fc;
+  --surface: #ffffff;
+  --text-main: var(--color-indigo-dark);
+  --text-muted: #888888;
+  --border-subtle: #eeeeee;
+  --shadow-base: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --shadow-lift: 0 8px 18px rgba(108, 92, 231, 0.15);
+}
+
+.admin-dashboard-page .dashboard-container {
+  width: 95%;
+  max-width: 900px;
+  margin: 60px auto 40px auto;
+  padding: 30px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: var(--background);
+}
+
+/* Ensure left content overlays the decorative graphic */
+.admin-dashboard-page .left-dashboard-area { position: relative; z-index: 20; }
+
+.admin-dashboard-page .right-graphic-area { overflow: hidden; }
+
+.admin-dashboard-page .admin-portal-container {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+	background: var(--surface);
+	border-radius: 16px;
+	padding: 30px;
+	box-shadow: var(--shadow-base);
+	border: 1px solid var(--color-lilac-light);
+	position: relative;
+	height: auto;
+	box-sizing: border-box;
+}
+
+.admin-dashboard-page .dashboard-header-row {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 15px;
+	margin-bottom: 25px;
+}
+.admin-dashboard-page .admin-portal-container h2 {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--color-lilac-main);
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.admin-dashboard-page .action-buttons-group {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 15px;
+    padding: 15px 0;
+    border-top: 1px solid var(--color-lilac-light);
+    border-bottom: 1px solid var(--color-lilac-light);
+}
+
+/* remove underline and ensure anchors look like buttons */
+.admin-dashboard-page .action-buttons-group a,
+.admin-dashboard-page .action-buttons-group a.btn-create {
+    text-decoration: none;
+    color: #fff; /* ensure button heading text is white */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* also remove underline from header links if any */
+.admin-dashboard-page .admin-heading a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.admin-dashboard-page .btn-primary {
+	flex-grow: 1;
+	text-align: center;
+	background: linear-gradient(90deg, var(--color-lilac-main), var(--color-lilac-accent));
+	color: white;
+	border:none;
+	padding: 12px 16px;
+	border-radius: 8px;
+	cursor:pointer;
+	font-weight: 700;
+	font-size: 0.9rem;
+	transition: transform 0.2s;
+	
+}
+.admin-dashboard-page .btn-primary:hover{
+	transform: translateY(-1px);
+	opacity: 0.95;
+}
+
+.admin-dashboard-page .student-list {
+	list-style:none;
+	padding: 0;
+	margin: 25px 0;
+	display:flex;
+	flex-direction:column;
+	gap: 15px;
+}
+
+.admin-dashboard-page .student-item {
+	padding: 18px;
+	border-radius: 12px;
+	background: linear-gradient(90deg, var(--surface), var(--color-lilac-light) 3%);
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	border: 1px solid var(--color-lilac-light);
+	box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-dashboard-page .student-item:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(108, 92, 231, 0.15);
+}
+
+.admin-dashboard-page .class-title{
+	color: var(--color-lilac-main);
+	font-size: 1.1rem;
+	font-weight: 800;
+	margin-bottom: 5px;
+}
+.admin-dashboard-page .student-count-meta{
+	color: var(--text-main);
+	font-weight: 600;
+	margin-right: 20px;
+}
+
+.admin-dashboard-page .btn-view-students{
+	background: var(--color-lilac-light);
+	color: var(--color-lilac-main);
+	font-weight: 700;
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid var(--color-lilac-main);
+	cursor:pointer;
+	font-size: 0.9rem;
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.admin-dashboard-page .btn-view-students:hover{
+	background: var(--color-lilac-main);
+	color: white;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(108, 92, 231, 0.4);
+}
+
+/* Ghost/outline variant used for Delete and similar actions */
+.admin-dashboard-page .btn-ghost{
+    background: transparent;
+    color: var(--color-lilac-main);
+    border: 1px solid var(--color-lilac-main);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.15s ease;
+}
+.admin-dashboard-page .btn-ghost:hover{
+    background: var(--color-lilac-main);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.25);
+}
+
+/* Specific class for the Delete button to ensure spacing matches */
+.admin-dashboard-page .btn-delete-class{ margin-left: 8px }
+
+/* Reuseable ghost button variant for less-prominent actions */
+.admin-dashboard-page .btn-ghost{
+	background: transparent;
+	border: 1px solid rgba(0,0,0,0.08);
+	padding: 8px 10px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 700;
+	color: var(--color-indigo-dark);
+}
+
+/* Make Delete button visually consistent with View Students */
+.admin-dashboard-page .btn-delete-class{
+	margin-left: 10px;
+	background: var(--color-lilac-light);
+	color: var(--color-lilac-main);
+	font-weight: 700;
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: 1px solid var(--color-lilac-main);
+	cursor: pointer;
+	font-size: 0.9rem;
+	transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.admin-dashboard-page .btn-delete-class:hover{
+	background: var(--color-lilac-main);
+	color: white;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(108, 92, 231, 0.4);
+}
+
+/* container that holds the three admin buttons */
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content:space-evenly; /* keeps buttons spread evenly */
+}
+
+/* make each button use the same visual style and remove link underline */
+.admin-actions .btn-create,
+.admin-actions a.btn-create {
+  text-decoration: none;     /* remove underline on links */
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#caa6ff,#b07bff);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(176,123,255,0.18);
+  border: none;
+  cursor: pointer;
+  min-width: 200px;         /* keeps buttons visually equal */
+  text-align: center;
+}
+
+/* ensure anchors behave like buttons on hover/focus */
+.admin-actions .btn-create:hover,
+.admin-actions a.btn-create:hover {
+  filter: brightness(0.98);
+  text-decoration: none;
+}
+
+/* responsive: stack and keep spacing on small screens */
+@media (max-width:720px) {
+  .admin-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .admin-actions .btn-create { min-width: auto; width: 100%; }
+}
+
+@media (max-width: 880px){
+ 	.admin-dashboard-page .action-buttons-group{ flex-direction: column; gap: 10px }
+ 	.admin-dashboard-page .btn-primary{ width: 100% }
+ 	.admin-dashboard-page .student-item{ flex-direction: column; align-items: flex-start; gap: 8px }
+}
+
+/* Page-specific tweaks (scoped) */
+.admin-dashboard-page .dashboard-container{ padding:12px }
+.admin-dashboard-page .dashboard-header-row h2{ margin:0 }
+.admin-dashboard-page .img{ width:100%; height:100%; max-width:420px }
+
+/* Clip the SVG to remove the top-left triangular overlay while keeping the rest of the graphic visible */
+.admin-dashboard-page .right-graphic-area svg {
+	clip-path: polygon(24% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 24%);
+}
+
+.admin-actions{
+  display:flex;
+  gap:24px;
+  align-items:center;
+  justify-content:center;   /* center the three buttons (moves left/right inward) */
+  padding: 0 32px;         /* gives breathing room from page edges */
+}
+
+/* keep buttons equal but ensure no underline and proper alignment */
+.admin-actions .btn-create,
+.admin-actions a.btn-create{
+  text-decoration: none;     /* remove underline on links */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  background: linear-gradient(90deg,#caa6ff,#b07bff);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(176,123,255,0.18);
+  border: none;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: center;
+}
+
+/* remove underline from the header/title if it is an anchor or styled link */
+.admin-heading,
+.admin-heading a {
+  text-decoration: none;
+}
+
+/* responsive tweak: keep centered stacking on small screens */
+@media (max-width:720px){
+  .admin-actions{
+    flex-direction:column;
+    gap:12px;
+    padding: 0 16px;
+  }
+  .admin-actions .btn-create{ width:100%; min-width:0; }
+}
+
+
+
+
